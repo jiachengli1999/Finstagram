@@ -8,3 +8,5 @@ Instructions to run:
 pip install -r requirements
 python app.py
 ```
+Team members: Troy Mei and Muhannad Elkattawy
+</br> Note: school project
