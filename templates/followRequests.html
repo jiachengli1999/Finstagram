@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Follow Requests</title>
+  </head>
+  <body>
+      <h1>Follow Requests</h1>
+      {% if potentialFollowers %}
+      <table>
+          {% for follower in potentialFollowers %}
+            <tr>
+                <td>
+                  {{follower}}
+                </td>
+                <td>
+                  <form action="/followRequests" method="post">
+                    <input type="hidden" name="username" value="{{follower}}">
+                    <button type="submit" name="accept" value="true">Accept</button>
+                    <button type="submit" name="accept" value="false">Decline</button>
+                  </form>
+                </td>
+            </tr>
+          {% endfor %}
+      </table>
+      {% else %}
+      You don't have any requests.
+      {% endif %}
+      <a href="/">Go back</a>
+  </body>
+</html>

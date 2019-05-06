@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Add Friend</title>
+  </head>
+  <body>
+      <h1>Add Friend</h1>
+      {% if groups %}
+      <table>
+          {% for group in groups %}
+            <tr>
+                <td>
+                  {{group}}
+                </td>
+                <td>
+                  <form action="/addFriend" method="post">
+                    <input type="hidden" name="groupName" value="{{group['groupName']}}">
+                    Add a friend to the group:<br>
+                    <input type="text" name="friendName">
+                    <input type="submit" value="Submit">
+                  </form>
+                </td>
+            </tr>
+          {% endfor %}
+      </table>
+      {% else %}
+      You don't own any friend groups!
+      {% endif %}
+      <a href="/">Go back</a>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Search By Tag</title>
+  </head>
+  <body>
+      <h1>Search By Tag</h1>
+      <form action="/searchByTag" method="post">
+        Search By Tag:<br>
+        <input type="text" name="tag">
+        <input type="submit" value="Submit">
+      </form>
+      {% if photos %}
+      <table>
+          {% for photo in photos %}
+            <tr>
+                <td>
+                  <img id="{{photo['photoID']}}" src="/image/{{photo['filePath']}}" width="300">
+                </td>
+            </tr>
+          {% endfor %}
+      </table>
+      {% endif %}
+      {% if error %}
+      {{error}}
+      {% endif %}
+      <a href="/">Go back</a>
+  </body>
+</html>

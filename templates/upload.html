@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Image Upload</title>
+    </head>
+    <body>
+        <h1>Upload an Image!</h1>
+
+        <div>
+            <form action="/uploadImage" method="post" enctype="multipart/form-data">
+                <input type="file" name="imageToUpload" accept="image/*">
+                <br/>
+                <input type="text" name = "Caption" placeholder="Caption..."/>
+              	<input type="radio" name="AllFollowers" value=1 required>Visible to Followers </input>
+                <input type="radio" name="AllFollowers" value=0 >Not Visible to Followers </input><br>
+                <input type="submit" value="Upload"> <br>
+            </form>
+
+        </div>
+        {% if message %}
+            {{ message }}
+        {% endif %}
+        You can allow a photo that is not available to all followers to be available to a group that you are in by clicking here: </br>
+        <a href="/AssignPhotoToGroup">Assign Photo To Group</a></br>
+        
+        <a href="/">Go back</a>
+    </body>
+</html>

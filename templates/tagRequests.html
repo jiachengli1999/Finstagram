@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Tag Requests</title>
+  </head>
+  <body>
+      <h1>Tag Requests</h1>
+      {% if tags %}
+      <table>
+          {% for tag in tags %}
+            <tr>
+                <td>
+                  <img src="/image/{{tag['filePath']}}" width="300">
+                </td>
+                <td>
+                  <form action="/tagRequests" method="post">
+                    <input type="hidden" name="photoID" value="{{tag['photoID']}}">
+                    <button type="submit" name="accept" value="true">Accept</button>
+                    <button type="submit" name="accept" value="false">Decline</button>
+                  </form>
+                </td>
+            </tr>
+          {% endfor %}
+      </table>
+      {% else %}
+      You don't have any requests.
+      {% endif %}
+      <a href="/">Go back</a>
+  </body>
+</html>

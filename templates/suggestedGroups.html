@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Suggested Close Friend Groups</title>
+  </head>
+  <body>
+      <h1>Suggested Close Friend Groups</h1>
+      {% if groups %}
+      <table>
+          {% for group in groups %}
+            <ul>
+              <li>{{group}}</li>
+            </ul>
+          {% endfor %}
+      </table>
+      {% else %}
+      No suggestions!
+      {% endif %}
+      <a href="/">Go back</a>
+  </body>
+</html>

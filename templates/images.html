@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Finstagram</title>
+    </head>
+    <body>
+        <h1>Image Gallery</h1>
+
+
+        <table>
+            <th>PhotoID</th>
+            <th>Owner</th>
+            <th>Image</th>
+            <th>Caption</th>
+            <th>Time Uploaded</th>
+            <th>Tagged </th>
+
+
+            {% for line in images %}
+            <tr>
+                <td>{{line.photoID}}</td>
+                <td>{{line.fname}}, {{line.lname}}</td>
+                <td>
+                      <img src="/image/{{line.filePath}}" width="300"/>
+                </td>
+                <td>{{line.caption}}</td>
+                <td>{{line.timestamp}}</td>
+                <td>{{line.tag}}</td>
+                <form action='/likePhoto' method='POST' enctype="multipart/form-data">
+                  <td><input type='submit' name='likebutton' value='like' > {{line.count}}</input></td>
+                  <td><input type='submit' name='likebutton' value='dislike'></input></td>
+                  <input type='hidden' name='photoID' value= '{{line.photoID}}'></input>
+                </form>
+                <form action='submitComment' method='POST'>
+                  <td> Comments: </br>
+                      <textarea readonly style="width: 300px; height:200px; text-align: left;">
+{% for i in line.comments %}
+  {{i.username}} : {{i.commentText}}
+  time: {{i.timestamp}}
+{% endfor %}
+
+                      </textarea> </br>
+                      <textarea placeholder="Enter a comment" name='comment' style="width: 300px;"></textarea></br>
+                      <input type='submit' name='comment'></input>
+                      <input type='hidden' name='photoID' value= '{{line.photoID}}'></input>
+                  </td>
+                </form>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <a href="/">Go back</a>
+    </body>
+</html>
